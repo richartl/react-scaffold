@@ -1,0 +1,12 @@
+version: '3'
+services:
+  reporter:
+    image: node:${NODE_VERSION}
+    ports:
+      - "${UI_PORT}:3000"
+    environment:
+      UI_PORT: "${UI_PORT}"
+    volumes:
+      - "./${PROJECT_ROOT}:/app"
+    working_dir: /app
+    entrypoint: sh postinstall
